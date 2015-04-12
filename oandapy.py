@@ -25,6 +25,18 @@ class EndpointsMixin(object):
         """
         endpoint  = 'v1/prices'
         return self.request(endpoint, params=params)
+        
+    def get_account(self, accountid):
+        """ Get current prices
+        Docs: http://developer.oanda.com/docs/v1/rates/#get-current-prices
+        """
+        endpoint  = '/v1/accounts/:'+accountid
+        return self.request(endpoint)
+    
+    def cancel(self, accountid, invoiceid):
+        conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
+        headers = {"Content-Type" : "application/x-www-form-urlencoded"}
+        conn.request("DELETE", "/v1/accounts/:"+accountid+"/orders/:"+invoiceid, headers)
 
     def get_history(self, **params):
         """ Retrieve instrument history
