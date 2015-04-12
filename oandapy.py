@@ -37,6 +37,7 @@ class EndpointsMixin(object):
         conn = httplib.HTTPSConnection("api-fxtrade.oanda.com")
         headers = {"Content-Type" : "application/x-www-form-urlencoded"}
         conn.request("DELETE", "/v1/accounts/:"+accountid+"/orders/:"+invoiceid, headers)
+        return conn.getresponse().read()
 
     def get_history(self, **params):
         """ Retrieve instrument history
