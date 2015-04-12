@@ -26,7 +26,7 @@ class EndpointsMixin(object):
         endpoint  = 'v1/prices'
         return self.request(endpoint, params=params)
         
-    def get_account(self, accountid):
+    def get_account1(self, accountid):
         """ Get current prices
         Docs: http://developer.oanda.com/docs/v1/rates/#get-current-prices
         """
